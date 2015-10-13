@@ -1,0 +1,21 @@
+body { padding-top: 70px;
+    height: 100%;}
+
+body > .container{
+    padding-bottom: 70px;
+    min-height: 100%;
+}
+h1{
+    margin: 30px;
+}
+
+/*Footer*/
+.footer > .navbar{
+    margin-bottom: 0;
+}
+
+.footer > .navbar > .container-fluid {
+    text-align: center;
+    color:#ffffff;
+    margin:15px;
+}
