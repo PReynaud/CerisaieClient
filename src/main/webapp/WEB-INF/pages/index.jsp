@@ -11,7 +11,7 @@
 			<h1>Bienvenue sur notre super site web</h1>
 		</div>
         <div class="col-lg-4">
-            <h1>Je suis une colonne</h1>
+            <h1>${client.nomCli}</h1>
         </div>
 	</div>
 </div>
