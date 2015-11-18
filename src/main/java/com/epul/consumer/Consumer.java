@@ -1,11 +1,12 @@
 package com.epul.consumer;
 
 import com.epul.metier.Client;
+import com.google.gson.Gson;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -23,20 +24,20 @@ public class Consumer {
 
     public Client getRessourceClient(int id){
         try {
+            Gson gson = new Gson();
             URL url = new URL(uri + id);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
 
-            JAXBContext jc = JAXBContext.newInstance(Client.class);
             InputStream json = connection.getInputStream();
-            Client customer = (Client) jc.createUnmarshaller().unmarshal(json);
+            String string = getStringFromInputStream(json);
+            Client customer = gson.fromJson(string, Client.class);
+
             connection.disconnect();
 
             return customer;
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (JAXBException e) {
             e.printStackTrace();
         } catch (ProtocolException e) {
             e.printStackTrace();
@@ -45,5 +46,34 @@ public class Consumer {
         }
 
         return null;
+    }
+
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
     }
 }
