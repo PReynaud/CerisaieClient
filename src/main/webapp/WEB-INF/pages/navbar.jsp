@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Accueil</a></li>
         <li><a href="/listeClient">Clients</a></li>
-        <li><a href="/listeSejour">Séjours</a></li>
+        <li><a href="/listeSejour">Sejours</a></li>
         <li><a href="/listeFacture">Factures</a></li>
       </ul>
     </div>

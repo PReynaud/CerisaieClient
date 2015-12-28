@@ -16,7 +16,7 @@ public class MainController {
 	public ModelAndView printWelcome(ModelMap model) {
 		model.addAttribute("message", "Hello world!");
 
-        Client client = new Consumer("http://localhost:8080/Clients/").getRessourceClient(1);
+        Client client = new Consumer("http://localhost:8080/Clients/").getOneClient(1);
 
 
         ModelAndView modelAndView = new ModelAndView("index");
