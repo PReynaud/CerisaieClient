@@ -19,7 +19,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Ajouter client</h4>
                     </div>
-                    <form method="post" action="/clients">
+                    <form id="formAddClient" method="post" action="/clients">
                         <div class="modal-body">
                             <p>
                                 <label for="nom">Nom</label> :
@@ -35,7 +35,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <input type="submit" class="btn btn-default" value="Envoyer"/>
+                            <input id="buttonAddClient" type="submit" class="btn btn-default" value="Envoyer"/>
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </form>
