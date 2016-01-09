@@ -36,4 +36,24 @@ public class SejourController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteOneSejour(@PathVariable("id") int id){
+        Boolean res = Consumer.deleteSejour(id);
+
+        ModelAndView modelAndView = new ModelAndView("deleteSejour");
+        modelAndView.addObject("result", res);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public ModelAndView updateOneSejour(@PathVariable("id") int id){
+        Sejour sejour = Consumer.getOneSejour(id);
+
+        ModelAndView modelAndView = new ModelAndView("updateSejour");
+        modelAndView.addObject("sejour", sejour);
+
+        return modelAndView;
+    }
 }
