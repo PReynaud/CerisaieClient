@@ -22,7 +22,7 @@
             <c:forEach items="${listSejour}" var="item">
                 <tr>
                     <td>${item.numSej}</td>
-                    <td>${item.numCli}</td>
+                    <td>${item.client.nomCli}</td>
                     <td>${item.numEmpl}</td>
                     <td>${item.datedebSej}</td>
                     <td>${item.dateFinSej}</td>

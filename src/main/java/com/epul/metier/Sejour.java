@@ -1,21 +1,19 @@
 package com.epul.metier;
 
-import java.sql.Timestamp;
-
 /**
  * Created by Pierre on 02/01/2016.
  */
 public class Sejour {
     private int numSej;
-    private int numCli;
     private int numEmpl;
-    private Timestamp datedebSej;
-    private Timestamp dateFinSej;
+    private Client client;
+    private String datedebSej;
+    private String dateFinSej;
     private int nbPersonnes;
 
-    public Sejour(int numSej, int numCli, int numEmpl, Timestamp datedebSej, Timestamp dateFinSej, int nbPersonnes) {
+    public Sejour(int numSej, Client client, int numEmpl, String datedebSej, String dateFinSej, int nbPersonnes) {
         this.numSej = numSej;
-        this.numCli = numCli;
+        this.client = client;
         this.numEmpl = numEmpl;
         this.datedebSej = datedebSej;
         this.dateFinSej = dateFinSej;
@@ -30,14 +28,6 @@ public class Sejour {
         this.numSej = numSej;
     }
 
-    public int getNumCli() {
-        return numCli;
-    }
-
-    public void setNumCli(int numCli) {
-        this.numCli = numCli;
-    }
-
     public int getNumEmpl() {
         return numEmpl;
     }
@@ -46,19 +36,19 @@ public class Sejour {
         this.numEmpl = numEmpl;
     }
 
-    public Timestamp getDatedebSej() {
+    public String getDatedebSej() {
         return datedebSej;
     }
 
-    public void setDatedebSej(Timestamp datedebSej) {
+    public void setDatedebSej(String datedebSej) {
         this.datedebSej = datedebSej;
     }
 
-    public Timestamp getDateFinSej() {
+    public String getDateFinSej() {
         return dateFinSej;
     }
 
-    public void setDateFinSej(Timestamp dateFinSej) {
+    public void setDateFinSej(String dateFinSej) {
         this.dateFinSej = dateFinSej;
     }
 
@@ -68,5 +58,13 @@ public class Sejour {
 
     public void setNbPersonnes(int nbPersonnes) {
         this.nbPersonnes = nbPersonnes;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }
