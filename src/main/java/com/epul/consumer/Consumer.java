@@ -137,12 +137,27 @@ public class Consumer {
 
     }
 
+    private static Boolean deleteRequest(URL url){
+        int result = getResponseCodeFromURL(url, "DELETE");
+        return result == 204;
+    }
+
     public static Boolean deleteClient(int id) {
         URL url = null;
         try {
             url = new URL(urlClient + id);
-            int result = getResponseCodeFromURL(url, "DELETE");
-            return result == 204;
+            return deleteRequest(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static Boolean deleteSejour(int id) {
+        URL url = null;
+        try {
+            url = new URL(urlSejour + id);
+            return deleteRequest(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

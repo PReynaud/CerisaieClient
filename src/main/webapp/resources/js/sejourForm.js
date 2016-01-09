@@ -5,15 +5,14 @@ $(document).ready(function(){
     $("#formAddClient").on('submit',function(event){
         event.preventDefault();
         var result = {};
-        result.nomCli = $("#nom").val();
-        result.adrRueCli = $("#adresse").val();
-        result.cpCli = $("#codePostal").val();
-        result.villeCli = $("#ville").val();
-        result.pieceCli = $("#piece").val();
-        result.numPieceCli = $("#numPiece").val();
+        result.numCli = $("#client").val();
+        result.datedebSej = $("#dateDebut").val();
+        result.dateFinSej = $("#dateFin").val();
+        result.numEmpl = $("#numEmplacement").val();
+        result.nbPersonnes = $("#nombrePersonne").val();
 
         $.ajax({
-            url: 'http://localhost:8080/Clients',
+            url: 'http://localhost:8080/Sejours',
             type: 'POST',
             data: JSON.stringify(result),
             contentType: 'application/Json; charset=utf-8',
