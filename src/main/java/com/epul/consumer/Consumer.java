@@ -1,5 +1,6 @@
 package com.epul.consumer;
 
+import com.epul.metier.Activite;
 import com.epul.metier.Client;
 import com.epul.metier.Sejour;
 import com.google.gson.Gson;
@@ -21,6 +22,7 @@ import java.util.List;
 public class Consumer {
     private static String urlClient = "http://localhost:8080/Clients/";
     private static String urlSejour = "http://localhost:8080/Sejours/";
+    private static String urlActivite = "http://localhost:8080/Activites/Sejour/";
 
     public static Client getOneClient(int id){
         try {
@@ -88,6 +90,37 @@ public class Consumer {
         return null;
     }
 
+    public static Boolean deleteClient(int id) {
+        URL url = null;
+        try {
+            url = new URL(urlClient + id);
+            int result = getResponseCodeFromURL(url, "DELETE");
+            return result == 204;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static List<Activite> getAllActiviteForSejour(int numSejour) {
+        try {
+            List<Activite> listActivite;
+            Gson gson = new Gson();
+            URL url = new URL(urlActivite + numSejour);
+
+            Type listType = new TypeToken<List<Activite>>() {}.getType();
+            String string = getResultFromURL(url, "GET");
+            listActivite = gson.fromJson(string, listType);
+            //TODO: faire qqch ici pour parser correctement
+
+            return listActivite;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
     private static String getResultFromURL(URL url, String requestMethod) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
@@ -137,15 +170,5 @@ public class Consumer {
 
     }
 
-    public static Boolean deleteClient(int id) {
-        URL url = null;
-        try {
-            url = new URL(urlClient + id);
-            int result = getResponseCodeFromURL(url, "DELETE");
-            return result == 204;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
 }

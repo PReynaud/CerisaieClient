@@ -33,6 +33,22 @@
                                 <label for="codePostal">Code postal</label> :
                                 <input type="number" name="codePostal" id="codePostal" required/>
                             </p>
+                            <p>
+                                <label for="ville">Ville</label> :
+                                <input type="text" name="ville" id="ville" required/>
+                            </p>
+                            <p>
+                                <label for="piece">Type de pièce d'identité</label> :
+                                <select id="piece">
+                                    <option value="CI">Carte d'identité</option>
+                                    <option value="PS">Passeport</option>
+                                    <option value="PC">Permis de conduire</option>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="numPiece">Numero de la pièce d'identité</label> :
+                                <input type="number" name="numPiece" id="numPiece" required/>
+                            </p>
                         </div>
                         <div class="modal-footer">
                             <input id="buttonAddClient" type="submit" class="btn btn-default" value="Envoyer"/>
@@ -73,5 +89,6 @@
 <%@include file="footer.jsp" %>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/clientForm.js"/>" type="text/javascript"></script>
 </body>
 </html>
