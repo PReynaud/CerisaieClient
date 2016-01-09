@@ -62,8 +62,8 @@
                     <td>${item.adrRueCli}</td>
                     <td>${item.cpCli}</td>
                     <td>${item.villeCli}</td>
-                    <td><a href=""><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td><a href=""><span class="glyphicon glyphicon-remove"></span></a></td>
+                    <td><a href="/listeClient/update/${item.numCli}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                    <td><a href="/listeClient/delete/${item.numCli}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>

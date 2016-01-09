@@ -26,7 +26,7 @@ public class Consumer {
         try {
             Gson gson = new Gson();
             URL url = new URL(urlClient + id);
-            String string = getResultFromURL(url);
+            String string = getResultFromURL(url,"GET");
             Client client = gson.fromJson(string, Client.class);
 
             return client;
@@ -44,7 +44,7 @@ public class Consumer {
             URL url = new URL(urlClient);
 
             Type listType = new TypeToken<List<Client>>() {}.getType();
-            String string = getResultFromURL(url);
+            String string = getResultFromURL(url, "GET");
             listClient = gson.fromJson(string, listType);
 
             return listClient;
@@ -59,7 +59,7 @@ public class Consumer {
         try {
             Gson gson = new Gson();
             URL url = new URL(urlSejour + id);
-            String string = getResultFromURL(url);
+            String string = getResultFromURL(url, "GET");
             Sejour sejour = gson.fromJson(string, Sejour.class);
 
             return sejour;
@@ -76,8 +76,9 @@ public class Consumer {
             URL url = new URL(urlSejour);
 
             Type listType = new TypeToken<List<Sejour>>() {}.getType();
-            String string = getResultFromURL(url);
+            String string = getResultFromURL(url, "GET");
             listSejour = gson.fromJson(string, listType);
+            //TODO: faire qqch ici pour parser correctement
 
             return listSejour;
         } catch (MalformedURLException e) {
@@ -87,17 +88,16 @@ public class Consumer {
         return null;
     }
 
-    private static String getResultFromURL(URL url) {
+    private static String getResultFromURL(URL url, String requestMethod) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
 
         String line;
         try {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+            connection.setRequestMethod(requestMethod);
             connection.setRequestProperty("Accept", "application/json");
             InputStream json = connection.getInputStream();
-
             br = new BufferedReader(new InputStreamReader(json));
             while ((line = br.readLine()) != null) {
                 sb.append(line);
@@ -118,5 +118,34 @@ public class Consumer {
 
         return sb.toString();
 
+    }
+
+    private static int getResponseCodeFromURL(URL url, String requestMethod) {
+        int responseCode = 0;
+        try {
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod(requestMethod);
+            connection.setRequestProperty("Accept", "application/json");
+            responseCode = connection.getResponseCode();
+            connection.disconnect();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseCode;
+
+    }
+
+    public static Boolean deleteClient(int id) {
+        URL url = null;
+        try {
+            url = new URL(urlClient + id);
+            int result = getResponseCodeFromURL(url, "DELETE");
+            return result == 204;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

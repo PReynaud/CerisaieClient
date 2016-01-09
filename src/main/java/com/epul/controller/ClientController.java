@@ -36,4 +36,24 @@ public class ClientController {
 
         return modelAndView;
     }
+
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public ModelAndView deleteOneClient(@PathVariable("id") int id){
+        Boolean res = Consumer.deleteClient(id);
+
+        ModelAndView modelAndView = new ModelAndView("deleteClient");
+        modelAndView.addObject("result", res);
+
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public ModelAndView updateOneClient(@PathVariable("id") int id){
+        Client client = Consumer.getOneClient(id);
+
+        ModelAndView modelAndView = new ModelAndView("updateClient");
+        modelAndView.addObject("client", client);
+
+        return modelAndView;
+    }
 }

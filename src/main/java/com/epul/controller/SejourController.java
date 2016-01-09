@@ -21,8 +21,8 @@ public class SejourController {
     public ModelAndView printAllSejour() {
         ArrayList<Sejour> listSejour = (ArrayList<Sejour>) Consumer.getAllSejour();
 
-        ModelAndView modelAndView = new ModelAndView("client");
-        modelAndView.addObject("listClient", listSejour);
+        ModelAndView modelAndView = new ModelAndView("sejour");
+        modelAndView.addObject("listSejour", listSejour);
 
         return modelAndView;
     }
