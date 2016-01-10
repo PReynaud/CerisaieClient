@@ -23,6 +23,8 @@ public class Consumer {
     private static String urlActivite = "http://localhost:8080/Activites/Sejour/";
     private static String urlSport = "http://localhost:8080/Sport/";
     private static String urlFacture = "http://localhost:8080/Facture/";
+    private static String urlEmplacement = "http://localhost:8080/Emplacement/";
+
 
     public static Client getOneClient(int id){
         try {
@@ -179,6 +181,24 @@ public class Consumer {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static List<EmplacementTypeEmplacement> getAllEmplacement(){
+        try {
+            List<EmplacementTypeEmplacement> emplacements;
+            Gson gson = new Gson();
+            URL url = new URL(urlEmplacement );
+
+            Type listType = new TypeToken<List<EmplacementTypeEmplacement>>() {}.getType();
+            String string = getResultFromURL(url, "GET");
+            emplacements = gson.fromJson(string, listType);
+
+            return emplacements;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
     private static String getResultFromURL(URL url, String requestMethod) {
