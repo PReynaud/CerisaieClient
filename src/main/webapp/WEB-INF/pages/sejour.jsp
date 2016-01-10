@@ -39,8 +39,12 @@
                                 <input class="datepicker" data-provide="datepicker" name="dateFin" id="dateFin" required/>
                             </p>
                             <p>
-                                <label for="numEmplacement">Numéro d'emplacement</label> :
-                                <input type="number" name="numEmplacement" id="numEmplacement" required/>
+                                <label for="emplacement">Emplacement</label> :
+                                <select name="emplacement" id="emplacement">
+                                    <c:forEach items="${listEmplacement}" var="item">
+                                        <option value="${item.numEmpl}"> emplacement ${item.numEmpl}, ${item.libtypepl}, ${item.surfaceEmpl}m carre, ${item.nbPersMaxEmpl} personnes max, ${item.tariftypepl} euros par personne</option>
+                                    </c:forEach>
+                                </select>
                             </p>
                             <p>
                                 <label for="nombrePersonne">Nombre de personnes</label> :

@@ -2,6 +2,7 @@ package com.epul.controller;
 
 import com.epul.consumer.Consumer;
 import com.epul.metier.Client;
+import com.epul.metier.EmplacementTypeEmplacement;
 import com.epul.metier.Sejour;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,10 +23,11 @@ public class SejourController {
     public ModelAndView printAllSejour() {
         ArrayList<Sejour> listSejour = (ArrayList<Sejour>) Consumer.getAllSejour();
         ArrayList<Client> listClient = (ArrayList<Client>) Consumer.getAllClient();
-
+        ArrayList<EmplacementTypeEmplacement> emplacements = (ArrayList<EmplacementTypeEmplacement>) Consumer.getAllEmplacement();
         ModelAndView modelAndView = new ModelAndView("sejour");
         modelAndView.addObject("listSejour", listSejour);
         modelAndView.addObject("listClient", listClient);
+        modelAndView.addObject("listEmplacement", emplacements);
 
         return modelAndView;
     }
