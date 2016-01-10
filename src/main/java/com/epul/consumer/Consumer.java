@@ -24,6 +24,7 @@ public class Consumer {
     private static String urlClient = "http://localhost:8080/Clients/";
     private static String urlSejour = "http://localhost:8080/Sejours/";
     private static String urlActivite = "http://localhost:8080/Activites/Sejour/";
+    private static String urlFacture = "http://localhost:8080/Facture/";
 
     public static Client getOneClient(int id){
         try {
@@ -141,7 +142,7 @@ public class Consumer {
         try {
             Facture facture;
             Gson gson = new Gson();
-            URL url = new URL(urlSejour + numSej + "/Tarif");
+            URL url = new URL(urlFacture + numSej);
             String string = getResultFromURL(url, "GET");
             facture = gson.fromJson(string, Facture.class);
             //TODO: faire qqch ici pour parser correctement

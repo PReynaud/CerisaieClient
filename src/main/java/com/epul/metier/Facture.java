@@ -1,82 +1,64 @@
 package com.epul.metier;
 
-import java.util.ArrayList;
+import com.epul.metier.*;
+
+import java.util.List;
 
 /**
  * Created by Laura on 10/01/2016.
  */
 public class Facture {
-private int numSej;
-    private int numCli;
-    private int numEmpl;
-    private String datedebSej;
-    private String dateFinSej;
-    private int nbPersonnes;
-    private int cout;
+    private Sejour sejourClient;
+    private Emplacement emplacement;
+    private TypeEmplacement typeEmplacement;
+    private List<Activite> activiteSport;
+    private float prix;
 
-    public Facture(int numSej, int numCli, int numEmpl, String datedebSej, String dateFinSej, int nbPersonnes, int cout) {
-        this.numSej = numSej;
-        this.numCli = numCli;
-        this.numEmpl = numEmpl;
-        this.datedebSej = datedebSej;
-        this.dateFinSej = dateFinSej;
-        this.nbPersonnes = nbPersonnes;
-        this.cout = cout;
+    public Facture(Sejour sejourClient, Emplacement emplacement, TypeEmplacement typeEmplacement, List<Activite> activiteSport, float prix) {
+        this.sejourClient = sejourClient;
+        this.emplacement = emplacement;
+        this.typeEmplacement = typeEmplacement;
+        this.activiteSport = activiteSport;
+        this.prix = prix;
     }
 
-    public int getNumSej() {
-        return numSej;
+    public Sejour getSejourClient() {
+        return sejourClient;
     }
 
-    public void setNumSej(int numSej) {
-        this.numSej = numSej;
+    public void setSejourClient(Sejour sejourClient) {
+        this.sejourClient = sejourClient;
     }
 
-    public int getNumCli() {
-        return numCli;
+    public Emplacement getEmplacement() {
+        return emplacement;
     }
 
-    public void setNumCli(int numCli) {
-        this.numCli = numCli;
+    public void setEmplacement(Emplacement emplacement) {
+        this.emplacement = emplacement;
     }
 
-    public int getNumEmpl() {
-        return numEmpl;
+    public TypeEmplacement getTypeEmplacement() {
+        return typeEmplacement;
     }
 
-    public void setNumEmpl(int numEmpl) {
-        this.numEmpl = numEmpl;
+    public void setTypeEmplacement(TypeEmplacement typeEmplacement) {
+        this.typeEmplacement = typeEmplacement;
     }
 
-    public String getDatedebSej() {
-        return datedebSej;
+    public List<Activite> getActiviteSport() {
+        return activiteSport;
     }
 
-    public void setDatedebSej(String datedebSej) {
-        this.datedebSej = datedebSej;
+    public void setActiviteSport(List<Activite> activiteSport) {
+        this.activiteSport = activiteSport;
     }
 
-    public String getDateFinSej() {
-        return dateFinSej;
+    public float getPrix() {
+        return prix;
     }
 
-    public void setDateFinSej(String dateFinSej) {
-        this.dateFinSej = dateFinSej;
-    }
-
-    public int getNbPersonnes() {
-        return nbPersonnes;
-    }
-
-    public void setNbPersonnes(int nbPersonnes) {
-        this.nbPersonnes = nbPersonnes;
-    }
-
-    public int getCout() {
-        return cout;
-    }
-
-    public void setCout(int cout) {
-        this.cout = cout;
+    public void setPrix(float prix) {
+        this.prix = prix;
     }
 }
