@@ -10,7 +10,12 @@ body > .container {
 }
 
 h1 {
+    text-align: center;
     margin: 30px;
+}
+
+h2{
+    text-align: justify;
 }
 
 /*Footer*/

@@ -162,7 +162,6 @@ public class Consumer {
             URL url = new URL(urlFacture + numSej);
             String string = getResultFromURL(url, "GET");
             facture = gson.fromJson(string, Facture.class);
-            //TODO: faire qqch ici pour parser correctement
 
             return facture;
         } catch (MalformedURLException e) {
@@ -177,7 +176,6 @@ public class Consumer {
         URL url = null;
         try {
             url = new URL(urlActiviteDelete + idSejour + "/" + idSport + "/" + date);
-            System.out.println(url);
             return deleteRequest(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();

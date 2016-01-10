@@ -7,10 +7,18 @@
 <%@include file="navbar.jsp" %>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-8">
-			<h1>Bienvenue sur votre site de gestion des séjours et des clients de votre camping ! </h1>
-			<h1>L'onglet Client vous permet de consulter la liste des clients, d'en ajouter, d'en modifier ou d'en supprimer.</h1>
-			<h1>L'onglet Séjour vous permet de consulter la liste des séjours, d'en ajouter, d'en modifier ou d'en supprimer. Il vous permet également de consulter les activité du séjour d'en ajoute ou d'en supprimer. Il est également possible de générer la facture en pdf de ce séjour.</h1>
+		<h1>Bienvenue sur votre site de gestion des séjours et des clients de votre camping ! </h1>
+	</div>
+	<div class="row">
+		<img class="img-responsive" src="/resources/images/camping.jpg">
+	</div>
+	<div class="row">
+		<div class="col-lg-4">
+			<h2>L'onglet Client vous permet de consulter la liste des clients, d'en ajouter, d'en modifier ou d'en supprimer.</h2>
+		</div>
+		<div class="col-lg-offset-2 col-lg-6">
+			<h2>L'onglet Séjour vous permet de consulter la liste des séjours, d'en ajouter, d'en modifier ou d'en supprimer. Il vous permet également de consulter les activité du séjour d'en ajoute ou d'en supprimer. Il est également possible de générer la facture en pdf de ce séjour.</h2>
+
 		</div>
 	</div>
 </div>
