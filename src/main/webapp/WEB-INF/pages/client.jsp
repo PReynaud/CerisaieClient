@@ -6,6 +6,7 @@
 <body>
 <%@include file="navbar.jsp" %>
 <div class="container">
+    <div class="row" id="addResult"></div>
     <div class="row">
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Ajouter client

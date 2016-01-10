@@ -11,7 +11,7 @@ $(document).ready(function(){
         result.villeCli = $("#ville").val();
         result.pieceCli = $("#piece").val();
         result.numPieceCli = $("#numPiece").val();
-
+        console.log(JSON.stringify(result));
         $.ajax({
             url: 'http://localhost:8080/Clients',
             type: 'POST',
@@ -21,10 +21,13 @@ $(document).ready(function(){
             async: true,
             xhrFields:{
                 withCreditentials : true
-            },
-            success: function(msg){
-                alert(msg);
             }
+        }).then(function(msg){
+            debugger;
+            $("#myModal").modal('hide');
+            $("#addResult").append("<div class=\"alert alert-success alert-dismissible\" role=\"alert\">" +
+                "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>" +
+                "<strong>Effectué</strong> Le client a bien été ajouté    </div>" );
         });
     });
 });

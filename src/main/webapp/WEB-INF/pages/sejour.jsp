@@ -61,6 +61,7 @@
                 <th>Date début</th>
                 <th>Date fin</th>
                 <th>Nombre de personnes</th>
+                <th>Détails</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
@@ -74,6 +75,7 @@
                     <td>${item.datedebSej}</td>
                     <td>${item.dateFinSej}</td>
                     <td>${item.nbPersonnes}</td>
+                    <td><a href="/listeActivite/${item.numSej}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                     <td><a href="/listeSejour/update/${item.numSej}"><span class="glyphicon glyphicon-edit"></span></a></td>
                     <td><a href="/listeSejout/delete/${item.numSej}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>

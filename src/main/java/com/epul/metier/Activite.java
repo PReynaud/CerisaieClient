@@ -6,37 +6,24 @@ import java.sql.Timestamp;
  * Created by Laura on 09/01/2016.
  */
 public class Activite {
-    private int codeSport;
-    private Timestamp dateJour;
+
+    private String dateJour;
     private int numSej;
     private int nbloc;
-    private String sport;
-    private String tarif;
-    private String unite;
+    private Sport sport;
 
-    public Activite(int codeSport, Timestamp dateJour, int numSej, int nbloc, String sport, String tarif, String unite) {
-        this.codeSport = codeSport;
+    public Activite(String dateJour, int numSej, int nbloc, Sport sport) {
         this.dateJour = dateJour;
         this.numSej = numSej;
         this.nbloc = nbloc;
         this.sport = sport;
-        this.tarif = tarif;
-        this.unite = unite;
     }
 
-    public int getCodeSport() {
-        return codeSport;
-    }
-
-    public void setCodeSport(int codeSport) {
-        this.codeSport = codeSport;
-    }
-
-    public Timestamp getDateJour() {
+    public String getDateJour() {
         return dateJour;
     }
 
-    public void setDateJour(Timestamp dateJour) {
+    public void setDateJour(String dateJour) {
         this.dateJour = dateJour;
     }
 
@@ -56,27 +43,11 @@ public class Activite {
         this.nbloc = nbloc;
     }
 
-    public String getSport() {
+    public Sport getSport() {
         return sport;
     }
 
-    public void setSport(String sport) {
+    public void setSport(Sport sport) {
         this.sport = sport;
-    }
-
-    public String getTarif() {
-        return tarif;
-    }
-
-    public void setTarif(String tarif) {
-        this.tarif = tarif;
-    }
-
-    public String getUnite() {
-        return unite;
-    }
-
-    public void setUnite(String unite) {
-        this.unite = unite;
     }
 }
