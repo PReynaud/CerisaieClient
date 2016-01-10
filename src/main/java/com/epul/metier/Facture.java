@@ -13,13 +13,17 @@ public class Facture {
     private TypeEmplacement typeEmplacement;
     private List<Activite> activiteSport;
     private float prix;
+    private float prixActivite;
+    private float prixSejour;
 
-    public Facture(Sejour sejourClient, Emplacement emplacement, TypeEmplacement typeEmplacement, List<Activite> activiteSport, float prix) {
+    public Facture(Sejour sejourClient, Emplacement emplacement, TypeEmplacement typeEmplacement, List<Activite> activiteSport, float prix, float prixActivite, float prixSejour) {
         this.sejourClient = sejourClient;
         this.emplacement = emplacement;
         this.typeEmplacement = typeEmplacement;
         this.activiteSport = activiteSport;
         this.prix = prix;
+        this.prixActivite = prixActivite;
+        this.prixSejour = prixSejour;
     }
 
     public Sejour getSejourClient() {
@@ -60,5 +64,21 @@ public class Facture {
 
     public void setPrix(float prix) {
         this.prix = prix;
+    }
+
+    public float getPrixActivite() {
+        return prixActivite;
+    }
+
+    public void setPrixActivite(float prixActivite) {
+        this.prixActivite = prixActivite;
+    }
+
+    public float getPrixSejour() {
+        return prixSejour;
+    }
+
+    public void setPrixSejour(float prixSejour) {
+        this.prixSejour = prixSejour;
     }
 }
