@@ -1,9 +1,6 @@
 package com.epul.consumer;
 
-import com.epul.metier.Activite;
-import com.epul.metier.Client;
-import com.epul.metier.Facture;
-import com.epul.metier.Sejour;
+import com.epul.metier.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -173,6 +170,17 @@ public class Consumer {
 
     }
 
+    public static Boolean deleteActivite(int idSejour, int idSport) {
+        URL url = null;
+        try {
+            url = new URL(urlActivite + idSejour + "/" + idSport);
+            return deleteRequest(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private static String getResultFromURL(URL url, String requestMethod) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
@@ -222,15 +230,4 @@ public class Consumer {
 
     }
 
-
-    public static Boolean deleteActivite(int idSejour, int idSport) {
-        URL url = null;
-        try {
-            url = new URL(urlActivite + idSejour + "/" + idSport);
-            return deleteRequest(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 }
