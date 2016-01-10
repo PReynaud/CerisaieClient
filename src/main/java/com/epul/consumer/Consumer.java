@@ -2,6 +2,7 @@ package com.epul.consumer;
 
 import com.epul.metier.Activite;
 import com.epul.metier.Client;
+import com.epul.metier.Facture;
 import com.epul.metier.Sejour;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -109,6 +110,51 @@ public class Consumer {
         return null;
     }
 
+    private static Boolean deleteRequest(URL url){
+        int result = getResponseCodeFromURL(url, "DELETE");
+        return result == 204;
+    }
+
+    public static Boolean deleteClient(int id) {
+        URL url = null;
+        try {
+            url = new URL(urlClient + id);
+            return deleteRequest(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static Boolean deleteSejour(int id) {
+        URL url = null;
+        try {
+            url = new URL(urlSejour + id);
+            return deleteRequest(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public static Facture getTarifForSejour(int numSej){
+        try {
+            Facture facture;
+            Gson gson = new Gson();
+            URL url = new URL(urlSejour + numSej + "/Tarif");
+            String string = getResultFromURL(url, "GET");
+            facture = gson.fromJson(string, Facture.class);
+            //TODO: faire qqch ici pour parser correctement
+
+            return facture;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+    }
+
     private static String getResultFromURL(URL url, String requestMethod) {
         BufferedReader br = null;
         StringBuilder sb = new StringBuilder();
@@ -158,31 +204,6 @@ public class Consumer {
 
     }
 
-    private static Boolean deleteRequest(URL url){
-        int result = getResponseCodeFromURL(url, "DELETE");
-        return result == 204;
-    }
 
-    public static Boolean deleteClient(int id) {
-        URL url = null;
-        try {
-            url = new URL(urlClient + id);
-            return deleteRequest(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    public static Boolean deleteSejour(int id) {
-        URL url = null;
-        try {
-            url = new URL(urlSejour + id);
-            return deleteRequest(url);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
 
 }

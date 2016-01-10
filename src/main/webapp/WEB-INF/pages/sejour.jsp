@@ -6,6 +6,7 @@
 <body>
 <%@include file="navbar.jsp" %>
 <div class="container">
+    <div class="row" id="addResult"></div>
     <div class="row">
         <!-- Trigger the modal with a button -->
         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Ajouter sejour
@@ -66,6 +67,7 @@
                 <th>Date fin</th>
                 <th>Nombre de personnes</th>
                 <th>Détails</th>
+                <th>Facture</th>
                 <th>Modifier</th>
                 <th>Supprimer</th>
             </tr>
@@ -80,6 +82,7 @@
                     <td>${item.dateFinSej}</td>
                     <td>${item.nbPersonnes}</td>
                     <td><a href="/listeActivite/${item.numSej}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+                    <td><a href="/Facture/${item.numSej}"><span class=" glyphicon glyphicon-credit-card"></span></a></td>
                     <td><a href="/listeSejour/update/${item.numSej}"><span class="glyphicon glyphicon-edit"></span></a></td>
                     <td><a href="/listeSejout/delete/${item.numSej}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>
