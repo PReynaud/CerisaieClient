@@ -1,0 +1,5 @@
+<Server>
+    <Service>
+        <Connector URIEncoding="UTF-8" useBodyEncodingForURI="true"/>
+    </Service>
+</Server>
