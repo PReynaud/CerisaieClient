@@ -8,7 +8,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-8">
-			<h1>Bienvenue sur notre super site web ééééèèèè àààà </h1>
+			<h1>Bienvenue sur votre site de gestion des séjours et des clients de votre camping ! </h1>
+			<h1>L'onglet Client vous permet de consulter la liste des clients, d'en ajouter, d'en modifier ou d'en supprimer.</h1>
+			<h1>L'onglet Séjour vous permet de consulter la liste des séjours, d'en ajouter, d'en modifier ou d'en supprimer. Il vous permet également de consulter les activité du séjour d'en ajoute ou d'en supprimer. Il est également possible de générer la facture en pdf de ce séjour.</h1>
 		</div>
 	</div>
 </div>

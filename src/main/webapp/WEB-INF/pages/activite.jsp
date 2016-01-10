@@ -76,7 +76,7 @@
                         <td>${item.sport.libelleSport}</td>
                         <td>${item.sport.tarifUnite}</td>
                         <td>${item.sport.uniteTpsSport}</td>
-                        <td><a href="/listeActivite/${numSejour}/delete/${item.sport.codeSport}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                        <td><a href="/listeActivite/${numSejour}/delete/${item.sport.codeSport}/${item.calculateTimestamp()}"><span class="glyphicon glyphicon-remove"></span></a></td>
                     </tr>
                 </c:forEach>
                 </tbody>
@@ -86,6 +86,8 @@
     </div>
 <%@include file="footer.jsp" %>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/bootstrap-datepicker.fr.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/activiteForm.js"/>" type="text/javascript"></script>
 </body>

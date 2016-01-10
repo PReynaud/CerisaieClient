@@ -9,6 +9,7 @@ import java.util.Calendar;
 public class Activite {
 
     private String dateJour;
+    //private String timestamp;
     private int numSej;
     private int nbloc;
     private Sport sport;
@@ -18,6 +19,7 @@ public class Activite {
         this.numSej = numSej;
         this.nbloc = nbloc;
         this.sport = sport;
+     //   calculateTimestamp();
     }
 
     public String getDateJour() {
@@ -26,6 +28,14 @@ public class Activite {
         calendar.setTimeInMillis(timestamp.getTime());
 
         return calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(calendar.YEAR);
+    }
+
+    public String calculateTimestamp(){
+        Timestamp timestamp = new Timestamp(Long.parseLong(dateJour));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp.getTime());
+
+        return  calendar.get(Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(calendar.YEAR) + "-" + calendar.get(Calendar.HOUR_OF_DAY);
     }
 
     public void setDateJour(String dateJour) {
@@ -55,4 +65,6 @@ public class Activite {
     public void setSport(Sport sport) {
         this.sport = sport;
     }
+
+
 }

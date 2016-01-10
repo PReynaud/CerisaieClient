@@ -16,7 +16,7 @@ $(document).ready(function(){
 
 
         $.ajax({
-            url: 'http://localhost:8080/Activite',
+            url: 'http://localhost:8080/Activites',
             type: 'POST',
             data: JSON.stringify(result),
             contentType: 'application/Json; charset=utf-8',

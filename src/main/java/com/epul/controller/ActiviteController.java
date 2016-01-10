@@ -32,9 +32,9 @@ public class ActiviteController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "{idSejour}/delete/{idSport}", method = RequestMethod.GET)
-    public ModelAndView deleteOneActivite(@PathVariable("idSejour") int idSejour, @PathVariable("idSport") int idSport){
-        Boolean res = Consumer.deleteActivite(idSejour, idSport);
+    @RequestMapping(value = "/{idSejour}/delete/{idSport}/{date}", method = RequestMethod.GET)
+    public ModelAndView deleteOneActivite(@PathVariable("idSejour") int idSejour, @PathVariable("idSport") int idSport, @PathVariable ("date") String date){
+        Boolean res = Consumer.deleteActivite(idSejour, idSport, date);
 
         ModelAndView modelAndView = new ModelAndView("deleteSejour");
         modelAndView.addObject("result", res);

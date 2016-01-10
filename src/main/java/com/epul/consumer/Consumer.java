@@ -21,6 +21,7 @@ public class Consumer {
     private static String urlClient = "http://localhost:8080/Clients/";
     private static String urlSejour = "http://localhost:8080/Sejours/";
     private static String urlActivite = "http://localhost:8080/Activites/Sejour/";
+    private static String urlActiviteDelete = "http://localhost:8080/Activites/";
     private static String urlSport = "http://localhost:8080/Sport/";
     private static String urlFacture = "http://localhost:8080/Facture/";
     private static String urlEmplacement = "http://localhost:8080/Emplacement/";
@@ -172,10 +173,11 @@ public class Consumer {
 
     }
 
-    public static Boolean deleteActivite(int idSejour, int idSport) {
+    public static Boolean deleteActivite(int idSejour, int idSport,String date) {
         URL url = null;
         try {
-            url = new URL(urlActivite + idSejour + "/" + idSport);
+            url = new URL(urlActiviteDelete + idSejour + "/" + idSport + "/" + date);
+            System.out.println(url);
             return deleteRequest(url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
