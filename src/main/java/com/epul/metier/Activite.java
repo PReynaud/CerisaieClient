@@ -1,6 +1,7 @@
 package com.epul.metier;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 /**
  * Created by Laura on 09/01/2016.
@@ -20,7 +21,11 @@ public class Activite {
     }
 
     public String getDateJour() {
-        return dateJour;
+        Timestamp timestamp = new Timestamp(Long.parseLong(dateJour));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp.getTime());
+
+        return calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(calendar.YEAR);
     }
 
     public void setDateJour(String dateJour) {

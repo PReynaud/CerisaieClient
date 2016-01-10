@@ -24,6 +24,7 @@ public class Consumer {
     private static String urlClient = "http://localhost:8080/Clients/";
     private static String urlSejour = "http://localhost:8080/Sejours/";
     private static String urlActivite = "http://localhost:8080/Activites/Sejour/";
+    private static String urlSport = "http://localhost:8080/Sport/";
     private static String urlFacture = "http://localhost:8080/Facture/";
 
     public static Client getOneClient(int id){
@@ -82,9 +83,26 @@ public class Consumer {
             Type listType = new TypeToken<List<Sejour>>() {}.getType();
             String string = getResultFromURL(url, "GET");
             listSejour = gson.fromJson(string, listType);
-            //TODO: faire qqch ici pour parser correctement
 
             return listSejour;
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static List<Sport> getAllSport(){
+        try {
+            List<Sport> listSport;
+            Gson gson = new Gson();
+            URL url = new URL(urlSport);
+
+            Type listType = new TypeToken<List<Sport>>() {}.getType();
+            String string = getResultFromURL(url, "GET");
+            listSport = gson.fromJson(string, listType);
+
+            return listSport;
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -101,7 +119,6 @@ public class Consumer {
             Type listType = new TypeToken<List<Activite>>() {}.getType();
             String string = getResultFromURL(url, "GET");
             listActivite = gson.fromJson(string, listType);
-            //TODO: faire qqch ici pour parser correctement
 
             return listActivite;
         } catch (MalformedURLException e) {
@@ -206,5 +223,14 @@ public class Consumer {
     }
 
 
-
+    public static Boolean deleteActivite(int idSejour, int idSport) {
+        URL url = null;
+        try {
+            url = new URL(urlActivite + idSejour + "/" + idSport);
+            return deleteRequest(url);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

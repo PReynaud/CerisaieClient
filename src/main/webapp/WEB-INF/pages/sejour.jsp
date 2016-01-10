@@ -32,11 +32,11 @@
                             </p>
                             <p>
                                 <label for="dateDebut">Date début</label> :
-                                <input data-provide="datepicker" name="dateDebut" id="dateDebut" required/>
+                                <input class="datepicker" data-provide="datepicker" name="dateDebut" id="dateDebut" required/>
                             </p>
                             <p>
                                 <label for="dateFin">Date fin</label> :
-                                <input data-provide="datepicker" name="dateFin" id="dateFin" required/>
+                                <input class="datepicker" data-provide="datepicker" name="dateFin" id="dateFin" required/>
                             </p>
                             <p>
                                 <label for="numEmplacement">Numéro d'emplacement</label> :
@@ -84,7 +84,7 @@
                     <td><a href="/listeActivite/${item.numSej}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                     <td><a href="/Facture/${item.numSej}"><span class=" glyphicon glyphicon-credit-card"></span></a></td>
                     <td><a href="/listeSejour/update/${item.numSej}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td><a href="/listeSejout/delete/${item.numSej}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                    <td><a href="/listeSejour/delete/${item.numSej}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -93,9 +93,9 @@
 </div>
 <%@include file="footer.jsp" %>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/resources/js/sejourForm.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/bootstrap-datepicker.fr.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/sejourForm.js"/>" type="text/javascript"></script>
 </body>
 </html>
