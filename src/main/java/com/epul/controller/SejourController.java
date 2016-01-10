@@ -1,6 +1,7 @@
 package com.epul.controller;
 
 import com.epul.consumer.Consumer;
+import com.epul.metier.Client;
 import com.epul.metier.Sejour;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,9 +21,11 @@ public class SejourController {
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView printAllSejour() {
         ArrayList<Sejour> listSejour = (ArrayList<Sejour>) Consumer.getAllSejour();
+        ArrayList<Client> listClient = (ArrayList<Client>) Consumer.getAllClient();
 
         ModelAndView modelAndView = new ModelAndView("sejour");
         modelAndView.addObject("listSejour", listSejour);
+        modelAndView.addObject("listClient", listClient);
 
         return modelAndView;
     }
@@ -49,10 +52,12 @@ public class SejourController {
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
     public ModelAndView updateOneSejour(@PathVariable("id") int id){
+        ArrayList<Client> listClient = (ArrayList<Client>) Consumer.getAllClient();
         Sejour sejour = Consumer.getOneSejour(id);
 
         ModelAndView modelAndView = new ModelAndView("updateSejour");
         modelAndView.addObject("sejour", sejour);
+        modelAndView.addObject("listClient", listClient);
 
         return modelAndView;
     }

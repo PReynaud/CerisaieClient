@@ -14,6 +14,7 @@
     <!-- CSS -->
     <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet"/>
     <link href="<c:url value="/resources/css/main.css"/>" rel="stylesheet"/>
+    <link href="<c:url value="/resources/css/bootstrap-datepicker3.min.css"/>" rel="stylesheet">
 
     <!-- Font -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>

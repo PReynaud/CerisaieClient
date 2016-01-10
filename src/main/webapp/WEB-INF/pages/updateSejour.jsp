@@ -10,23 +10,27 @@
         <div class="row">
             <p>
                 <label for="client">Client</label> :
-                <input type="text" name="client" id="client" required/>
+                <select name="client" id="client" value="${sejour.client.numCli}">
+                    <c:forEach items="${listClient}" var="item">
+                        <option value="${item.numCli}">${item.nomCli}</option>
+                    </c:forEach>
+                </select>
             </p>
             <p>
                 <label for="dateDebut">Date début</label> :
-                <input type="text" name="dateDebut" id="dateDebut" required/>
+                <input data-provide="datepicker" name="dateDebut" id="dateDebut" value="${sejour.datedebSej}" required/>
             </p>
             <p>
                 <label for="dateFin">Date fin</label> :
-                <input type="text" name="dateFin" id="dateFin" required/>
+                <input data-provide="datepicker" name="dateFin" id="dateFin" value="${sejour.dateFinSej}" required/>
             </p>
             <p>
                 <label for="numEmplacement">Numéro d'emplacement</label> :
-                <input type="number" name="numEmplacement" id="numEmplacement" required/>
+                <input type="number" name="numEmplacement" id="numEmplacement" value="${sejour.numEmpl}" required/>
             </p>
             <p>
                 <label for="nombrePersonne">Nombre de personnes</label> :
-                <input type="number" name="nombrePersonne" id="nombrePersonne" required/>
+                <input type="number" name="nombrePersonne" id="nombrePersonne" value="${sejour.nbPersonnes}" required/>
             </p>
         </div>
         <div class="row">
@@ -37,5 +41,7 @@
 <%@include file="footer.jsp" %>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/bootstrap-datepicker.fr.min.js"/>" type="text/javascript"></script>
 </body>
 </html>

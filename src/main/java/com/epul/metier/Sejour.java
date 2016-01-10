@@ -1,5 +1,8 @@
 package com.epul.metier;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+
 /**
  * Created by Pierre on 02/01/2016.
  */
@@ -37,7 +40,11 @@ public class Sejour {
     }
 
     public String getDatedebSej() {
-        return datedebSej;
+        Timestamp timestamp = new Timestamp(Long.parseLong(datedebSej));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp.getTime());
+
+        return calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(calendar.YEAR);
     }
 
     public void setDatedebSej(String datedebSej) {
@@ -45,7 +52,11 @@ public class Sejour {
     }
 
     public String getDateFinSej() {
-        return dateFinSej;
+        Timestamp timestamp = new Timestamp(Long.parseLong(dateFinSej));
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(timestamp.getTime());
+
+        return calendar.get(Calendar.DAY_OF_MONTH) + "/" + (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(calendar.YEAR);
     }
 
     public void setDateFinSej(String dateFinSej) {
