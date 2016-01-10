@@ -1,5 +1,6 @@
 package com.epul.utils;
 
+import com.epul.metier.Activite;
 import com.epul.metier.Facture;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -21,6 +22,7 @@ public class PdfGenerator extends AbstractITextPdfView {
         Font fontTitre = new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD);
         Font fontGrosTitre = new Font(Font.FontFamily.TIMES_ROMAN, 25, Font.UNDERLINE);
         Font fontNormal = new Font(Font.FontFamily.TIMES_ROMAN, 12);
+        Font fontNormalGras = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD);
 
 
         document.addTitle("Facture" + facture.getSejourClient().getNumSej());
@@ -53,45 +55,134 @@ public class PdfGenerator extends AbstractITextPdfView {
         facturationDate.setAlignment(Element.ALIGN_RIGHT);
         document.add(facturationDate);
 
+        document.add(Chunk.NEWLINE);
+
+
         PdfPTable detailSejour = new PdfPTable(2);
         detailSejour.setWidthPercentage(50.0f);
         detailSejour.setWidths(new float[]{3.0f, 2.0f});
 
         PdfPCell cell = new PdfPCell();
-        cell.setPhrase(new Phrase("Numéro de séjour : ", fontNormal));
+        cell.setPhrase(new Phrase("Numéro de séjour : ", fontNormalGras));
         detailSejour.addCell(cell);
         detailSejour.addCell(Integer.toString(facture.getSejourClient().getNumSej()));
 
-        PdfPTable table = new PdfPTable(5);
-        table.setWidthPercentage(100.0f);
-        table.setWidths(new float[] {3.0f, 2.0f, 2.0f, 2.0f, 1.0f});
-        table.setSpacingBefore(10);
+        cell.setPhrase(new Phrase("Numéro d’emplacement : ", fontNormalGras));
+        detailSejour.addCell(cell);
+        detailSejour.addCell(Integer.toString(facture.getSejourClient().getNumEmpl()));
 
-        // define font for table header row
-        Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN);
-        font.setColor(BaseColor.WHITE);
+        cell.setPhrase(new Phrase("Type d’emplacement : ", fontNormalGras));
+        detailSejour.addCell(cell);
+        detailSejour.addCell(facture.getTypeEmplacement().getLibtypepl());
 
-        // define table header cell
-        cell = new PdfPCell();
-        cell.setBackgroundColor(BaseColor.BLUE);
-        cell.setPadding(5);
+        detailSejour.setHorizontalAlignment(Element.ALIGN_LEFT);
+        document.add(detailSejour);
 
-        // write table header
-        cell.setPhrase(new Phrase("Book Title", font));
-        table.addCell(cell);
+        document.add(Chunk.NEWLINE);
 
-        cell.setPhrase(new Phrase("Author", font));
-        table.addCell(cell);
+        PdfPTable detailClient = new PdfPTable(1);
+        detailClient.setWidthPercentage(50.0f);
+        cell.setPhrase(new Phrase("Numéro du client : " + facture.getSejourClient().getClient().getNumCli() + "\n"
+                                     + facture.getSejourClient().getClient().getNomCli() + "\n"
+                                     + facture.getSejourClient().getClient().getAdrRueCli() + "\n"
+                                     + facture.getSejourClient().getClient().getCpCli() + " "
+                                     + facture.getSejourClient().getClient().getVilleCli() + "\n"
+                , fontNormal));
+        detailClient.addCell(cell);
+        detailClient.setHorizontalAlignment(Element.ALIGN_RIGHT);
 
-        cell.setPhrase(new Phrase("ISBN", font));
-        table.addCell(cell);
+        document.add(detailClient);
 
-        cell.setPhrase(new Phrase("Published Date", font));
-        table.addCell(cell);
+        document.add(Chunk.NEWLINE);
 
-        cell.setPhrase(new Phrase("Price", font));
-        table.addCell(cell);
+        document.add(new Paragraph("Sejour : ", fontTitre));
 
-        document.add(table);
+        PdfPTable detailSejourBis = new PdfPTable(4);
+        detailSejourBis.setWidthPercentage(100.0f);
+        detailSejourBis.setWidths(new float[]{25.0f, 25.0f, 25.0f, 25.0f});
+        detailSejourBis.setSpacingBefore(10);
+
+        cell.setPhrase(new Phrase("Date de début : ", fontNormalGras));
+        detailSejourBis.addCell(cell);
+        cell.setPhrase(new Phrase("Date de fin : ", fontNormalGras));
+        detailSejourBis.addCell(cell);
+        cell.setPhrase(new Phrase("Nombre de personnes : ", fontNormalGras));
+        detailSejourBis.addCell(cell);
+        cell.setPhrase(new Phrase("Prix/jour/personne : ", fontNormalGras));
+        detailSejourBis.addCell(cell);
+
+        detailSejourBis.addCell(facture.getSejourClient().getDatedebSej());
+        detailSejourBis.addCell(facture.getSejourClient().getDateFinSej());
+        detailSejourBis.addCell(Integer.toString(facture.getSejourClient().getNbPersonnes()));
+        detailSejourBis.addCell(Float.toString(facture.getTypeEmplacement().getTariftypepl()));
+
+        cell.setPhrase(new Phrase());
+        cell.setBorder(0);
+        detailSejourBis.addCell(cell);
+        detailSejourBis.addCell(cell);
+        cell.setPhrase(new Phrase("Total Séjour : ", fontNormalGras));
+        cell.setBorder(Rectangle.BOX);
+        detailSejourBis.addCell(cell);
+        detailSejourBis.addCell(Float.toString(facture.getPrixSejour()));
+
+        detailSejourBis.setHorizontalAlignment(Element.ALIGN_CENTER);
+        document.add(detailSejourBis);
+
+        document.add(Chunk.NEWLINE);
+
+        if(facture.getActiviteSport().size() != 0){
+            document.add(new Paragraph("Prestations sportives : ", fontTitre));
+
+            PdfPTable detailActivite = new PdfPTable(5);
+            detailActivite.setWidthPercentage(100.0f);
+            detailActivite.setWidths(new float[]{20.0f, 20.0f, 20.0f, 20.0f, 20.0f});
+
+            detailActivite.setSpacingBefore(10);
+
+            cell.setPhrase(new Phrase("Date", fontNormalGras));
+            detailActivite.addCell(cell);
+            cell.setPhrase(new Phrase("Nom du sport", fontNormalGras));
+            detailActivite.addCell(cell);
+            cell.setPhrase(new Phrase("Prix (unité)", fontNormalGras));
+            detailActivite.addCell(cell);
+            cell.setPhrase(new Phrase("Nombre d'unités", fontNormalGras));
+            detailActivite.addCell(cell);
+            cell.setPhrase(new Phrase("Montant", fontNormalGras));
+            detailActivite.addCell(cell);
+
+            for (Activite item: facture.getActiviteSport()) {
+                detailActivite.addCell(item.getDateJour());
+                detailActivite.addCell(item.getSport().getLibelleSport());
+                detailActivite.addCell(Integer.toString(item.getSport().getTarifUnite()));
+                detailActivite.addCell(Integer.toString(item.getNbloc()));
+                detailActivite.addCell(Integer.toString(item.getSport().getTarifUnite() * item.getNbloc()));
+            }
+
+            cell.setPhrase(new Phrase());
+            cell.setBorder(0);
+            detailActivite.addCell(cell);
+            detailActivite.addCell(cell);
+            detailActivite.addCell(cell);
+
+            cell.setPhrase(new Phrase("Total Activité : ", fontNormalGras));
+            cell.setBorder(Rectangle.BOX);
+            detailActivite.addCell(cell);
+            detailActivite.addCell(Float.toString(facture.getPrixActivite()));
+
+            detailActivite.setHorizontalAlignment(Element.ALIGN_CENTER);
+            document.add(detailActivite);
+
+            document.add(Chunk.NEWLINE);
+        }
+
+        PdfPTable total = new PdfPTable(2);
+        cell.setPhrase(new Phrase("Total à payer : ", fontNormalGras));
+        total.addCell(cell);
+        total.addCell(Float.toString(facture.getPrix()));
+
+        total.setWidthPercentage(40.0f);
+        total.setHorizontalAlignment(Element.ALIGN_RIGHT);
+
+        document.add(total);
     }
 }
