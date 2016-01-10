@@ -84,7 +84,7 @@
                     <td><a href="/listeActivite/${item.numSej}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
                     <td><a href="/Facture/${item.numSej}"><span class=" glyphicon glyphicon-credit-card"></span></a></td>
                     <td><a href="/listeSejour/update/${item.numSej}"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td><a href="/listeSejout/delete/${item.numSej}"><span class="glyphicon glyphicon-remove"></span></a></td>
+                    <td><a href="/listeSejour/delete/${item.numSej}"><span class="glyphicon glyphicon-remove"></span></a></td>
                 </tr>
             </c:forEach>
             </tbody>
