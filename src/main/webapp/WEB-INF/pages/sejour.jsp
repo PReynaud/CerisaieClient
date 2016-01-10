@@ -32,11 +32,11 @@
                             </p>
                             <p>
                                 <label for="dateDebut">Date début</label> :
-                                <input data-provide="datepicker" name="dateDebut" id="dateDebut" required/>
+                                <input class="datepicker" data-provide="datepicker" name="dateDebut" id="dateDebut" required/>
                             </p>
                             <p>
                                 <label for="dateFin">Date fin</label> :
-                                <input data-provide="datepicker" name="dateFin" id="dateFin" required/>
+                                <input class="datepicker" data-provide="datepicker" name="dateFin" id="dateFin" required/>
                             </p>
                             <p>
                                 <label for="numEmplacement">Numéro d'emplacement</label> :
@@ -93,9 +93,9 @@
 </div>
 <%@include file="footer.jsp" %>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
-<script src="<c:url value="/resources/js/sejourForm.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>" type="text/javascript"></script>
 <script src="<c:url value="/resources/js/bootstrap-datepicker.fr.min.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/main.js"/>" type="text/javascript"></script>
+<script src="<c:url value="/resources/js/sejourForm.js"/>" type="text/javascript"></script>
 </body>
 </html>
